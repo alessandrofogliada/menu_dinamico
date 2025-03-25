@@ -38,7 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       menuItem.innerHTML = `
         <h4>${item["Nome piatto"] || "Senza nome"}</h4>
-        ${item["Immagine"] ? `<img src="${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2" style="max-width: 300px;">` : ""}
+        ${
+          item["Immagine"]
+            ? `
+            <div class="image-wrapper">
+              <div class="img-loader"></div>
+              <img src="${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
+            </div>`
+            : ""
+        }        
         <p><strong>Ingredienti:</strong> ${item["Ingredienti"] || "-"}</p>
         <p><strong>Prezzo:</strong> ${item["Prezzo"] || "-"}</p>
 
@@ -51,6 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }`;
 
       menuContainer.appendChild(menuItem);
+
+      const img = menuItem.querySelector("img");
+      if (img) {
+        img.addEventListener("load", () => {
+          img.classList.add("loaded");
+          const loader = menuItem.querySelector(".img-loader");
+          if (loader) loader.remove();
+        });
+      }
+
     });
 
     hideLoader();
