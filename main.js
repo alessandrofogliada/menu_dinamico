@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       menuItem.innerHTML = `
         <h4>${item["Nome piatto"] || "Senza nome"}</h4>
-        ${item["Immagine"] ? `<img src="${item["Immagine"]} alt="${item["Nome piatto"]}" class="img-fluid my-2 " style="max-width: 300px;">` : ""}
+        ${item["Immagine"] ? `<img src="${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2" style="max-width: 300px;">` : ""}
         <p><strong>Ingredienti:</strong> ${item["Ingredienti"] || "-"}</p>
         <p><strong>Prezzo:</strong> ${item["Prezzo"] || "-"}</p>
 
