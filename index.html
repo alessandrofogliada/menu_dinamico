@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <!-- Bootstrap JavaScript (necessario per componenti come navbar e modali) -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <title>Menu Dinamico Google</title>
+</head>
+<body>
+
+
+    <header class="intestazione">
+
+        <a class="header" href="">
+            <img src="img/Il tuo logo.png" alt="Logo Azienda">
+        </a>
+
+    </header>      
+          
+            <!-- Presentazione menu  -->
+
+     <div id="intro">
+
+                    <h1>Scopri il nostro Menú!</h1>
+
+                    <button id="btnAntipasti" class="btn btn-success bottone fade-in">Antipasti 🥗</button>
+                    <button id="btnPrimi" class="btn btn-primary bottone fade-in">Primi 🍝</button>
+                    <button id="btnSecondi" class="btn btn-danger bottone fade-in">Secondi 🥩</button>
+                    <button id="btnDolci" class="btn btn-info bottone fade-in">Dolci 🍰</button>
+
+                    <!-- Loader di caricamento -->
+                    <div id="loader-wrapper" style="display: none; text-align: center; margin: 20px 0;">
+                        <div class="loader" style="margin: 0 auto;"></div>
+                        <p id="loader-text">Caricamento in corso...</p>
+                      </div>
+                      
+                    <div id="menu"></div>
+
+
+               
+        </div>
+        
+
+    <div id="menu">
+
+        <img class="fade-left" src="img/restaurant.jpg" alt="fotoristorante">
+
+        <img class="fade-right" src="img/restaurant2.jpg" alt="fotoristorante">
+
+        
+    </div>
+
+    <footer></footer>
+
+    <!-- Importa lo script correttamente -->
+    <script src="main.js"></script>
+
+</body>
+</html>
+
