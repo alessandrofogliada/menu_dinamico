@@ -80,6 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     menuContainer.innerHTML = `<h2 class="text-center my-4">${sezione}</h2>`;
+    // Mostra i filtri solo dopo il caricamento del menu
+  document.getElementById("filtri-container").style.display = "flex";
 
     piatti.forEach(item => {
       const menuItem = document.createElement("div");
@@ -101,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
               ? `
               <div class="image-wrapper">
                 <div class="img-loader"></div>
-                <img src="img/${item["Immagine"]}" loading="lazy" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
+                <img src="img/${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
               </div>`
               : ""
           }        
