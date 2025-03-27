@@ -30,11 +30,26 @@
      <div id="intro">
 
                     <h1>Scopri il nostro Menú!</h1>
+                            
 
                     <button id="btnAntipasti" class="btn btn-success bottone fade-in">Antipasti 🥗</button>
                     <button id="btnPrimi" class="btn btn-primary bottone fade-in">Primi 🍝</button>
                     <button id="btnSecondi" class="btn btn-danger bottone fade-in">Secondi 🥩</button>
                     <button id="btnDolci" class="btn btn-info bottone fade-in">Dolci 🍰</button>
+
+                    <div class="my-3 d-flex gap-3 align-items-center">
+                        <label>
+                            <input type="checkbox" id="chkVegetariano"> Vegetariano
+                        </label>
+                        <label>
+                            <input type="checkbox" id="chkVegano"> Vegano
+                        </label>      
+                        
+                        <button id="btnResetFiltri" class="btn btn-secondary">Reset filtri</button>
+
+                    </div>
+
+                      
 
                     <!-- Loader di caricamento -->
                     <div id="loader-wrapper" style="display: none; text-align: center; margin: 20px 0;">
@@ -43,7 +58,11 @@
                       </div>
 
 
+                      <div id="filtro-messaggio" class="text-center my-3 text-danger fw-bold"></div>
+
+                      
                     <div id="menu">
+                        
                         
                         <img class="fade-left" src="img/restaurant.jpg" alt="fotoristorante">
                 
@@ -54,7 +73,8 @@
         </div>
         
 
-    <footer></footer>
+    <footer>
+    </footer>
 
     <!-- Importa lo script correttamente -->
     <script src="main.js"></script>

@@ -5,14 +5,14 @@ body{
 }
 
 .intestazione{
-    background-color: #00570e;
+    background-color: #3e0057;
     width: 100%;
-    height: 80px;
+    height: 100px;
     display: flex;
     padding: 0 20px;
     align-items: center;
         h2{
-            color: #5bc157;
+            color: #9a57c1;
         }
         
 }
@@ -38,15 +38,22 @@ header img{
     width: 30%;
 }
 
+.piatto {
+  display: inline-block;
+  margin: 10px;
+}
+.hidden {
+  display: none;
+}
 
 
 .dropdown-menu .dropdown-item {
-    background-color: #5bc157;
+    background-color: #bc57c1;
 }
 
 /* Cambia colore al passaggio del mouse */
 .dropdown-menu .dropdown-item:hover {
-    background-color: #40a84a;
+    background-color: #a840a8;
     color: white;
 }
 
@@ -63,7 +70,7 @@ header img{
   
 
 .load{
-    background-color: #00570a;
+    background-color: #3b0057;
     color: white;
 }
 
@@ -86,7 +93,7 @@ img{
 /* Menu */
 
 #intro{
-    background-color: #57c16c ;
+    background-color: #ae57c1 ;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,7 +121,7 @@ h4 , p , strong {
 
 .loader {
     border: 6px solid #f3f3f3;
-    border-top: 6px solid #34db39;
+    border-top: 6px solid #ca34db;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -150,6 +157,8 @@ h4 , p , strong {
     margin: 5px 0 ;
     width: 90%;
 }
+
+/* Style img */
 
 .fade-left {
     margin: 20px 0;
@@ -204,7 +213,7 @@ h4 , p , strong {
     width: 30px;
     height: 30px;
     border: 4px solid #ccc;
-    border-top: 4px solid #34db39;
+    border-top: 4px solid #db34d3;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     transform: translate(-50%, -50%);
@@ -218,13 +227,20 @@ h4 , p , strong {
   .image-wrapper img.loaded {
     opacity: 1;
   }
+
+  /* classe utilizzata per far sparire i piatti non consoni alla selezione  */
+  .hidden {
+    display: none !important;
+  }
+  
   
 
 /* Style footer  */
 
 footer{
-    background-color: #00570e;
+    background-color: #4b0057;
     width: 100%;
-    height: 80px;
+    height: 100px;
 }
+
 
