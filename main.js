@@ -44,16 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const isVegetariano = dish.classList.contains('vegetariano');
       const isVegano = dish.classList.contains('vegano');
   
+      let show = false;
+  
       if (!showVegetariano && !showVegano) {
-        dish.classList.remove('hidden');
-        visibleCount++;
-      } else if (showVegetariano && showVegano) {
-        dish.classList.remove('hidden');
-        visibleCount++;
-      } else if (showVegetariano && isVegetariano) {
-        dish.classList.remove('hidden');
-        visibleCount++;
-      } else if (showVegano && isVegano) {
+        show = true; // Nessun filtro → mostra tutto
+      } else {
+        // Mostra solo se corrisponde almeno a uno dei filtri attivi
+        if (showVegetariano && isVegetariano) show = true;
+        if (showVegano && isVegano) show = true;
+      }
+  
+      if (show) {
         dish.classList.remove('hidden');
         visibleCount++;
       } else {
@@ -61,14 +62,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   
-    // Mostra messaggio se nessun piatto visibile
     if (visibleCount === 0) {
-      msgBox.textContent = "Nessun piatto disponibile per i filtri selezionati.";
+      msgBox.textContent = "Nessun piatto disponibile per i filtri selezionati. Seleziona prima la categoria";
     } else {
       msgBox.textContent = "";
     }
   }
-  
+    
   
   function renderMenu(sezione) {
     const piatti = menuData[sezione];
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     piatti.forEach(item => {
       const menuItem = document.createElement("div");
-      menuItem.classList.add("menu-item", "mb-4", "p-3", "border", "rounded", "allineo");
+      menuItem.classList.add("menu-item", "mb-4", "p-3", "rounded", "carta");
 
       // Aggiunge classe in base alla categoria
       const categoria = item["Categoria"]?.toLowerCase();
@@ -94,26 +94,28 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       menuItem.innerHTML = `
-        <h4>${item["Nome piatto"] || "Senza nome"}</h4>
-        ${
-          item["Immagine"]
-            ? `
-            <div class="image-wrapper">
-              <div class="img-loader"></div>
-              <img src="${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
-            </div>`
-            : ""
-        }        
-        <p><strong>Ingredienti:</strong> ${item["Ingredienti"] || "-"}</p>
-        <p><strong>Prezzo:</strong> ${item["Prezzo"] || "-"}</p>
+      
+          <h4>${item["Nome piatto"] || "Senza nome"}</h4>
+          ${
+            item["Immagine"]
+              ? `
+              <div class="image-wrapper">
+                <div class="img-loader"></div>
+                <img src="${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
+              </div>`
+              : ""
+          }        
+          <p><strong>Ingredienti:</strong> ${item["Ingredienti"] || "-"}</p>
+          <p><strong>Prezzo:</strong> ${item["Prezzo"] || "-"}</p>
 
-        ${
-          item["Categoria"] === "Vegano"
-            ? `<span class="badge bg-success">Vegano</span>`
-            : item["Categoria"] === "Vegetariano"
-            ? `<span class="badge bg-warning text-dark">Vegetariano</span>`
-            : ""
-        }`;
+          ${
+            item["Categoria"] === "Vegano"
+              ? `<span class="badge bg-success">Vegano</span>`
+              : item["Categoria"] === "Vegetariano"
+              ? `<span class="badge bg-warning text-dark">Vegetariano</span>`
+              : ""
+          }
+          `;
 
       menuContainer.appendChild(menuItem);
 

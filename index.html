@@ -32,20 +32,35 @@
                     <h1>Scopri il nostro Menú!</h1>
                             
 
-                    <button id="btnAntipasti" class="btn btn-success bottone fade-in">Antipasti 🥗</button>
-                    <button id="btnPrimi" class="btn btn-primary bottone fade-in">Primi 🍝</button>
-                    <button id="btnSecondi" class="btn btn-danger bottone fade-in">Secondi 🥩</button>
-                    <button id="btnDolci" class="btn btn-info bottone fade-in">Dolci 🍰</button>
+                    <div class="container">
+
+                        <button id="btnAntipasti" class="btn bottone fade-in">
+                            <div class="bottone-testo">Antipasti 🥗</div>
+                          </button>
+                          
+                          
+                        <button id="btnPrimi" class="btn bottone fade-in">                            
+                        <div class="bottone-testo"> Primi 🍝</div>
+                        </button>
+
+                        <button id="btnSecondi" class="btn bottone fade-in"> <div class="bottone-testo"> Secondi 🥩</div>
+                        </button>
+                        <button id="btnDolci" class="btn bottone fade-in">                        
+                            <div class="bottone-testo"> Dolci 🍰</div>
+
+                        </button>
+                    </div>
+              
 
                     <div class="my-3 d-flex gap-3 align-items-center">
-                        <label>
-                            <input type="checkbox" id="chkVegetariano"> Vegetariano
+                        <label class="btn btn-warning" style="display: flex; flex-direction: column;">
+                            <input type="checkbox" id="chkVegetariano" class="checkbox"> Vegetariano 🥦
                         </label>
-                        <label>
-                            <input type="checkbox" id="chkVegano"> Vegano
+                        <label class="btn btn-success" style="display: flex; flex-direction: column;">
+                            <input type="checkbox" id="chkVegano" class="checkbox "> Vegano 🥕
                         </label>      
                         
-                        <button id="btnResetFiltri" class="btn btn-secondary">Reset filtri</button>
+                        <button id="btnResetFiltri" class="btn btn-primary">Reset filtri ⏎</button>
 
                     </div>
 

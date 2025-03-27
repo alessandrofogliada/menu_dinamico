@@ -5,28 +5,25 @@ body{
 }
 
 .intestazione{
-    background-color: #3e0057;
+    background-color: #18100a;
     width: 100%;
     height: 100px;
     display: flex;
     padding: 0 20px;
     align-items: center;
-        h2{
-            color: #9a57c1;
-        }
-        
 }
 
-h1{
+#intro{
+  background-image: url(https://i.imgur.com/s0AweSC.png);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+}
+
+h1 , h2{
     text-align: center;
     color: #f3f3f3 !important;
-}
-
-
-h2{
-    margin-bottom: 0 !important;
-    text-align: center;
-
 }
 
 .header{
@@ -37,6 +34,75 @@ h2{
 header img{
     width: 30%;
 }
+
+/*  Icone dei menu  */
+.container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.bottone {
+  position: relative;
+  margin: 5px;
+  width: 45%;
+  height: 200px;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+.bottone-testo {
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+  width: 90%;
+  color: white;
+  background: rgba(0, 0, 0, 0.5); /* sfondo semi-trasparente */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+
+
+#btnAntipasti{
+  background-image: url(https://i.imgur.com/YT9zmSa.jpeg
+  );
+  background-size: cover;
+}
+
+#btnPrimi{
+  background-image: url(https://i.imgur.com/Zc50blP.jpeg);
+  background-size: cover;
+}
+
+#btnSecondi{
+  background-image: url(https://i.imgur.com/OfSf9fF.jpeg
+  );
+  background-size: cover;
+}
+
+#btnDolci{
+  background-image: url(https://i.imgur.com/OhbRHrx.jpeg
+  );
+  background-size: cover;
+}
+
+.carta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.282);
+
+}
+/* Filtri e Checkbox */
+input{
+  color: white;
+}
+
+/* Menu piatti */
 
 .piatto {
   display: inline-block;
@@ -90,30 +156,13 @@ img{
     width: 100%;
 }
 
-/* Menu */
-
-#intro{
-    background-color: #ae57c1 ;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 35px;
-
-    
-}
 
 /* effetti di apparizione  */
 
 
 h4 , p , strong {
-    color: black;
+    color: white;
     text-align: center;
-}
-
-.allineo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 
@@ -145,18 +194,11 @@ h4 , p , strong {
     100% { transform: rotate(360deg); }
 }
 
-
-/* estetica dropdown menu  */
-
 .menu{
     display: flex;
     justify-content: center;
 }
 
-.bottone{
-    margin: 5px 0 ;
-    width: 90%;
-}
 
 /* Style img */
 
@@ -238,8 +280,8 @@ h4 , p , strong {
 /* Style footer  */
 
 footer{
-    background-color: #4b0057;
-    width: 100%;
+  background-color: #18100a;
+  width: 100%;
     height: 100px;
 }
 
