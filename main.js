@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
               ? `
               <div class="image-wrapper">
                 <div class="img-loader"></div>
-                <img src="${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
+                <img src="img/${item["Immagine"]}" loading="lazy" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
               </div>`
               : ""
           }        
@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (loader) loader.remove();
         });
       }
+
+
     });
 
     // Reset checkbox

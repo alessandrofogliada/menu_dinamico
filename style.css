@@ -67,25 +67,22 @@ header img{
 
 
 #btnAntipasti{
-  background-image: url(https://i.imgur.com/YT9zmSa.jpeg
-  );
+  background-image: url(img/buschetta.webp);
   background-size: cover;
 }
 
 #btnPrimi{
-  background-image: url(https://i.imgur.com/Zc50blP.jpeg);
+  background-image: url(img/lasagne.webp);
   background-size: cover;
 }
 
 #btnSecondi{
-  background-image: url(https://i.imgur.com/OfSf9fF.jpeg
-  );
+  background-image: url(img/polenta_spezzatino.webp);
   background-size: cover;
 }
 
 #btnDolci{
-  background-image: url(https://i.imgur.com/OhbRHrx.jpeg
-  );
+  background-image: url(img/tiramisu_.webp);
   background-size: cover;
 }
 
