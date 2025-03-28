@@ -70,13 +70,13 @@ header img{
 }
 
 .btn-warning.active {
-  background-color: #d39e00 !important;
+  background-color: #a97f02 !important;
   border-color: #c69500 !important;
   color: white;
 }
 
 .btn-success.active {
-  background-color: #198754 !important;
+  background-color: #004f2a !important;
   border-color: #157347 !important;
   color: white;
 }
