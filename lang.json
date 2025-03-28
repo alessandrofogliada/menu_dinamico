@@ -1,0 +1,23 @@
+{
+    "it": {
+      "antipasti": "Antipasti",
+      "primi": "Primi",
+      "secondi": "Secondi",
+      "dolci": "Dolci",
+      "vegano": "Vegano",
+      "vegetariano": "Vegetariano",
+      "reset": "Reset",
+      "nessunPiatto": "Nessun piatto disponibile per i filtri selezionati. Seleziona prima la categoria"
+    },
+    "en": {
+      "antipasti": "Starters",
+      "primi": "First Courses",
+      "secondi": "Main Courses",
+      "dolci": "Desserts",
+      "vegano": "Vegan",
+      "vegetariano": "Vegetarian",
+      "reset": "Reset",
+      "nessunPiatto": "No dishes available for selected filters. Please select a category first"
+    }
+  }
+  
