@@ -11,15 +11,41 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('chkVegetariano').addEventListener('change', applyFilters);
   document.getElementById('chkVegano').addEventListener('change', applyFilters);
 
-  langSelector.addEventListener('change', (e) => {
-    loadLanguage(e.target.value);
+ 
+  langSelector.addEventListener('click', (e) => {
+    if (e.target.tagName === "BUTTON" && e.target.dataset.lang) {
+      const newLang = e.target.dataset.lang;
+      loadLanguage(newLang);
+      if (typeof ultimaSezione !== 'undefined') {
+        renderMenu(ultimaSezione);
+      }
+    }
   });
+  
+  
 
   const menuUrl = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgYI-d9NpG0e3C4qBMV6i3WQSA1c9oSZ_DleGHXXI9p8ro6czr5xeU6RnTfsZ7cNu1BTfVG8cUTC0IAEzEBiw371vIw7qnwXHgs-d3pbwMOLYlILH334DhPYeiAxY6aYIlb0Uh6sfRYrSI_9VqmHZWcapPa0o2bd6jhoPGRuFMQAUtY--UEeiVGPqOiToj1yQrGNmxW3c2xaBg6IxmQL-QbCyd3gnLYYrS5QDO0T2v9C8nrxjtoJ0D2bAtbWh7Vuhpo7_mNfgZDUtQ14HQ9-MgU3wBCMA&lib=MPqJJs0z37qA-qGw-bJBepz3FZZAEnAtP";
 
   let menuData = {};
   let currentLang = localStorage.getItem("lang") || "it";
   let langData = {};
+  let ultimaSezione = null;
+
+  const sezioniTradotte = {
+    it: {
+      Antipasti: "Antipasti",
+      Primi: "Primi",
+      Secondi: "Secondi",
+      Dolci: "Dolci"
+    },
+    en: {
+      Antipasti: "Starters",
+      Primi: "First Courses",
+      Secondi: "Main Courses",
+      Dolci: "Desserts"
+    }
+  };
+  
 
   function loadLanguage(lang) {
     fetch('lang.json')
@@ -33,19 +59,24 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  
   function translateUI() {
-    document.getElementById("btnAntipasti").textContent = langData.antipasti;
-    document.getElementById("btnPrimi").textContent = langData.primi;
-    document.getElementById("btnSecondi").textContent = langData.secondi;
-    document.getElementById("btnDolci").textContent = langData.dolci;
+    console.log("LANG DATA:", langData);
+  
+    document.getElementById("btnAntipasti").querySelector(".bottone-testo").textContent = langData.antipasti;
+    document.getElementById("btnPrimi").querySelector(".bottone-testo").textContent = langData.primi;
+    document.getElementById("btnSecondi").querySelector(".bottone-testo").textContent = langData.secondi;
+    document.getElementById("btnDolci").querySelector(".bottone-testo").textContent = langData.dolci;
     document.getElementById("btnResetFiltri").textContent = langData.reset;
-
+    document.getElementById("benvenuto").textContent = langData.scopriMenu;
+  
     const labels = document.querySelectorAll("#filtri-container label");
     if (labels.length >= 2) {
       labels[0].childNodes[1].textContent = " " + langData.vegetariano;
       labels[1].childNodes[1].textContent = " " + langData.vegano;
     }
   }
+  
 
   function showLoader() {
     loaderWrapper.style.display = "block";
@@ -95,13 +126,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const piatti = menuData[sezione];
 
     if (!piatti) {
-      menuContainer.innerHTML = `<p style="color:red;">Nessun piatto trovato per ${sezione}</p>`;
+      menuContainer.innerHTML = `<p style="color:red; ">Nessun piatto trovato per ${sezione}</p>`;
       hideLoader();
       return;
     }
 
-    menuContainer.innerHTML = `<h2 class="text-center my-4">${sezione}</h2>`;
+    const titoloSezione = sezioniTradotte[currentLang]?.[sezione] || sezione;
+    menuContainer.innerHTML = `<h2 class="text-center my-4">${titoloSezione}</h2>`;
+
     document.getElementById("filtri-container").style.display = "flex";
+
+    console.log("PIATTI:", piatti);
+
 
     piatti.forEach(item => {
       const menuItem = document.createElement("div");
@@ -111,26 +147,31 @@ document.addEventListener("DOMContentLoaded", function () {
       if (categoria === "vegano") menuItem.classList.add("vegano");
       else if (categoria === "vegetariano") menuItem.classList.add("vegetariano");
 
+      const nome = item[`Nome piatto (${currentLang})`] || item["Nome piatto"] || item["Nome piatto (it)"] || "Senza nome";
+      const ingredienti = item[`Ingredienti (${currentLang})`] || item["Ingredienti"] || item["Ingredienti (it)"] || "-";
+      const prezzo = item["Prezzo"] || "-";
       menuItem.innerHTML = `
-        <h4>${item["Nome piatto"] || "Senza nome"}</h4>
-        ${
-          item["Immagine"]
-            ? `<div class="image-wrapper">
-                 <div class="img-loader"></div>
-                 <img src="img/${item["Immagine"]}" alt="${item["Nome piatto"]}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
-               </div>`
-            : ""
-        }
-        <p><strong>Ingredienti:</strong> ${item["Ingredienti"] || "-"}</p>
-        <p><strong>Prezzo:</strong> ${item["Prezzo"] + '€' || "-"}</p>
-        ${
-          item["Categoria"]?.toLowerCase() === "vegano"
-            ? `<span class="badge bg-success">${langData.vegano}</span>`
-            : item["Categoria"]?.toLowerCase() === "vegetariano"
-            ? `<span class="badge bg-warning text-dark">${langData.vegetariano}</span>`
-            : ""
-        }
-      `;
+        <h4>${nome}</h4>
+      ${
+        item["Immagine"]
+          ? `<div class="image-wrapper">
+              <div class="img-loader"></div>
+              <img src="img/${item["Immagine"]}" alt="${nome}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
+            </div>`
+          : ""
+      }
+      <p><strong>${langData.ingredienti}:</strong> ${ingredienti}</p>  
+      <p><strong>${langData.prezzo}:</strong> ${prezzo}€</p>
+
+      ${
+        categoria === "vegano"
+          ? `<span class="badge bg-success">${langData.vegano}</span>`
+          : categoria === "vegetariano"
+          ? `<span class="badge bg-warning text-dark">${langData.vegetariano}</span>`
+          : ""
+      }
+    `;
+
 
       menuContainer.appendChild(menuItem);
 
@@ -167,10 +208,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  btnAntipasti.addEventListener("click", () => fetchMenuData("Antipasti"));
-  btnPrimi.addEventListener("click", () => fetchMenuData("Primi"));
-  btnSecondi.addEventListener("click", () => fetchMenuData("Secondi"));
-  btnDolci.addEventListener("click", () => fetchMenuData("Dolci"));
+  btnAntipasti.addEventListener("click", () => {
+    ultimaSezione = "Antipasti";
+    fetchMenuData("Antipasti");
+  });
+
+  btnPrimi.addEventListener("click", () => {
+    ultimaSezione = "Primi";
+    fetchMenuData("Primi");
+  });
+
+  btnSecondi.addEventListener("click", () => {
+    ultimaSezione = "Secondi";
+    fetchMenuData("Secondi");
+  });
+
+  btnDolci.addEventListener("click", () => {
+    ultimaSezione = "Dolci";
+    fetchMenuData("Dolci");
+  });
+  
+  // btnPrimi.addEventListener("click", () => fetchMenuData("Primi"));
+  // btnSecondi.addEventListener("click", () => fetchMenuData("Secondi"));
+  // btnDolci.addEventListener("click", () => fetchMenuData("Dolci"));
 
   btnResetFiltri.addEventListener('click', () => {
     document.getElementById('chkVegetariano').checked = false;

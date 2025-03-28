@@ -7,7 +7,10 @@
       "vegano": "Vegano",
       "vegetariano": "Vegetariano",
       "reset": "Reset",
-      "nessunPiatto": "Nessun piatto disponibile per i filtri selezionati. Seleziona prima la categoria"
+      "nessunPiatto": "Nessun piatto disponibile per i filtri selezionati. Seleziona prima la categoria",
+      "scopriMenu":"Scopri il nostro Menu",
+      "ingredienti":"Ingredienti",
+      "prezzo":"Prezzo"
     },
     "en": {
       "antipasti": "Starters",
@@ -17,7 +20,11 @@
       "vegano": "Vegan",
       "vegetariano": "Vegetarian",
       "reset": "Reset",
-      "nessunPiatto": "No dishes available for selected filters. Please select a category first"
+      "nessunPiatto": "No dishes available for selected filters. Please select a category first",
+      "scopriMenu":"Discover our Menu",
+      "ingredienti":"Ingredients",
+      "prezzo":"Price"
+
     }
   }
   
