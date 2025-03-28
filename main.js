@@ -7,9 +7,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const loaderWrapper = document.getElementById("loader-wrapper");
   const btnResetFiltri = document.getElementById('btnResetFiltri');
   const langSelector = document.getElementById('langSelector');
+  const btnVeg = document.getElementById('btnFiltroVegetariano');
+  const btnVegan = document.getElementById('btnFiltroVegano');
+  
 
-  document.getElementById('chkVegetariano').addEventListener('change', applyFilters);
-  document.getElementById('chkVegano').addEventListener('change', applyFilters);
+  let filtroVeg = { vegetariano: false, vegano: false };
+  
+  btnVeg.addEventListener('click', () => {
+    filtroVeg.vegetariano = !filtroVeg.vegetariano;
+    btnVeg.classList.toggle('active');
+    applyFilters();
+  });
+
+  btnVegan.addEventListener('click', () => {
+    filtroVeg.vegano = !filtroVeg.vegano;
+    btnVegan.classList.toggle('active');
+    applyFilters();
+  });
+
 
  
   langSelector.addEventListener('click', (e) => {
@@ -56,8 +71,14 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("lang", lang);
         langSelector.value = lang;
         translateUI();
+  
+        // 🔄 Se una sezione è già stata selezionata, ricarica quella nella lingua nuova
+        if (ultimaSezione && menuData[ultimaSezione]) {
+          renderMenu(ultimaSezione);
+        }
       });
   }
+  
 
   
   function translateUI() {
@@ -89,92 +110,86 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function applyFilters() {
-    const chkVegetariano = document.getElementById('chkVegetariano');
-    const chkVegano = document.getElementById('chkVegano');
-    const msgBox = document.getElementById('filtro-messaggio');
-
-    const showVegetariano = chkVegetariano.checked;
-    const showVegano = chkVegano.checked;
-
     const dishes = document.querySelectorAll('.menu-item');
+    const msgBox = document.getElementById('filtro-messaggio');
     let visibleCount = 0;
-
+  
     dishes.forEach(dish => {
       const isVegetariano = dish.classList.contains('vegetariano');
       const isVegano = dish.classList.contains('vegano');
-
+  
       let show = false;
-      if (!showVegetariano && !showVegano) {
+      if (!filtroVeg.vegetariano && !filtroVeg.vegano) {
         show = true;
       } else {
-        if (showVegetariano && isVegetariano) show = true;
-        if (showVegano && isVegano) show = true;
+        if (filtroVeg.vegetariano && isVegetariano) show = true;
+        if (filtroVeg.vegano && isVegano) show = true;
       }
-
-      if (show) {
-        dish.classList.remove('hidden');
-        visibleCount++;
-      } else {
-        dish.classList.add('hidden');
-      }
+  
+      dish.classList.toggle('hidden', !show);
+      if (show) visibleCount++;
     });
-
+  
     msgBox.textContent = visibleCount === 0 ? langData.nessunPiatto : "";
   }
+  
 
   function renderMenu(sezione) {
-    const piatti = menuData[sezione];
-
-    if (!piatti) {
-      menuContainer.innerHTML = `<p style="color:red; ">Nessun piatto trovato per ${sezione}</p>`;
+    // 🔒 Se nessuna sezione selezionata o non trovata nei dati, esco senza errori
+    if (!sezione || !menuData[sezione]) {
       hideLoader();
       return;
     }
-
+  
+    const piatti = menuData[sezione];
+  
+    if (!piatti) {
+      menuContainer.innerHTML = `<p style="color:black;">Nessun piatto trovato per ${sezione}</p>`;
+      hideLoader();
+      return;
+    }
+  
     const titoloSezione = sezioniTradotte[currentLang]?.[sezione] || sezione;
     menuContainer.innerHTML = `<h2 class="text-center my-4">${titoloSezione}</h2>`;
-
     document.getElementById("filtri-container").style.display = "flex";
-
+  
     console.log("PIATTI:", piatti);
-
-
+  
     piatti.forEach(item => {
       const menuItem = document.createElement("div");
       menuItem.classList.add("menu-item", "mb-4", "p-3", "rounded", "carta");
-
+  
       const categoria = item["Categoria"]?.toLowerCase();
       if (categoria === "vegano") menuItem.classList.add("vegano");
       else if (categoria === "vegetariano") menuItem.classList.add("vegetariano");
-
+  
       const nome = item[`Nome piatto (${currentLang})`] || item["Nome piatto"] || item["Nome piatto (it)"] || "Senza nome";
       const ingredienti = item[`Ingredienti (${currentLang})`] || item["Ingredienti"] || item["Ingredienti (it)"] || "-";
       const prezzo = item["Prezzo"] || "-";
+  
       menuItem.innerHTML = `
         <h4>${nome}</h4>
-      ${
-        item["Immagine"]
-          ? `<div class="image-wrapper">
-              <div class="img-loader"></div>
-              <img src="img/${item["Immagine"]}" alt="${nome}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
-            </div>`
-          : ""
-      }
-      <p><strong>${langData.ingredienti}:</strong> ${ingredienti}</p>  
-      <p><strong>${langData.prezzo}:</strong> ${prezzo}€</p>
-
-      ${
-        categoria === "vegano"
-          ? `<span class="badge bg-success">${langData.vegano}</span>`
-          : categoria === "vegetariano"
-          ? `<span class="badge bg-warning text-dark">${langData.vegetariano}</span>`
-          : ""
-      }
-    `;
-
-
+        ${
+          item["Immagine"]
+            ? `<div class="image-wrapper">
+                <div class="img-loader"></div>
+                <img src="img/${item["Immagine"]}" alt="${nome}" class="img-fluid my-2 menu-img" style="max-width: 300px;">
+              </div>`
+            : ""
+        }
+        <p><strong>${langData.ingredienti}:</strong> ${ingredienti}</p>
+        <p><strong>${langData.prezzo}:</strong> ${prezzo}€</p>
+        ${
+          categoria === "vegano"
+            ? `<span class="badge bg-success">${langData.vegano}</span>`
+            : categoria === "vegetariano"
+            ? `<span class="badge bg-warning text-dark">${langData.vegetariano}</span>`
+            : ""
+        }
+      `;
+  
       menuContainer.appendChild(menuItem);
-
+  
       const img = menuItem.querySelector("img");
       if (img) {
         img.addEventListener("load", () => {
@@ -184,10 +199,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     });
-
+  
     applyFilters();
     hideLoader();
   }
+  
 
   function fetchMenuData(sezione) {
     showLoader();
@@ -197,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
           menuData = data;
           renderMenu(sezione);
+          document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
         })
         .catch(err => {
           console.error("Errore nel caricamento:", err);
@@ -205,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     } else {
       renderMenu(sezione);
+      document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
     }
   }
 
@@ -233,8 +251,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // btnDolci.addEventListener("click", () => fetchMenuData("Dolci"));
 
   btnResetFiltri.addEventListener('click', () => {
-    document.getElementById('chkVegetariano').checked = false;
-    document.getElementById('chkVegano').checked = false;
+    filtroVeg = { vegetariano: false, vegano: false };
+    btnVeg.classList.remove('active');
+    btnVegan.classList.remove('active');
     applyFilters();
   });
 
