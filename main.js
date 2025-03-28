@@ -34,9 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function translateUI() {
-
-    console.log("LANG DATA:", langData); // 👈 aggiungi questo
-
     document.getElementById("btnAntipasti").textContent = langData.antipasti;
     document.getElementById("btnPrimi").textContent = langData.primi;
     document.getElementById("btnSecondi").textContent = langData.secondi;
