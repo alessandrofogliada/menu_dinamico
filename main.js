@@ -71,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("lang", lang);
         langSelector.value = lang;
         translateUI();
-  
+        aggiornaLingueDropdown();
+
         // 🔄 Se una sezione è già stata selezionata, ricarica quella nella lingua nuova
         if (ultimaSezione && menuData[ultimaSezione]) {
           renderMenu(ultimaSezione);
@@ -97,6 +98,26 @@ document.addEventListener("DOMContentLoaded", function () {
       labels[1].childNodes[1].textContent = " " + langData.vegano;
     }
   }
+
+  function aggiornaLingueDropdown() {
+    const langButtons = document.querySelectorAll('#langSelector .dropdown-menu button');
+    const mainDropdownBtn = document.querySelector('#langSelector .dropdown-toggle');
+  
+    langButtons.forEach(btn => {
+      btn.style.display = (btn.dataset.lang === currentLang) ? 'none' : 'inline-block';
+    });
+  
+    const langLabels = {
+      it: '🇮🇹 Italiano',
+      en: '🇬🇧 English'
+      // aggiungi altre lingue se servono
+    };
+  
+    if (mainDropdownBtn) {
+      mainDropdownBtn.textContent = langLabels[currentLang] || 'Lingua';
+    }
+  }
+  
   
 
   function showLoader() {
@@ -258,4 +279,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   loadLanguage(currentLang);
+  aggiornaLingueDropdown();
+
+  // Nasconde la lingua attiva dal menu e aggiorna il pulsante principale
+const langButtons = document.querySelectorAll('#langSelector .dropdown-menu button');
+const mainDropdownBtn = document.querySelector('#langSelector .dropdown-toggle');
+
+// Nascondi la lingua attiva dal dropdown
+langButtons.forEach(btn => {
+  if (btn.dataset.lang === currentLang) {
+    btn.style.display = 'none';
+  }
+});
+
+// Aggiorna il testo del bottone principale con la lingua attiva
+if (mainDropdownBtn) {
+  const langLabels = {
+    it: '🇮🇹 Italiano',
+    en: '🇬🇧 English'
+    // Aggiungi qui eventuali altre lingue
+  };
+  mainDropdownBtn.textContent = langLabels[currentLang] || 'Lingua';
+}
+
 });

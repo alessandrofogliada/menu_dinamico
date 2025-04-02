@@ -1,313 +1,314 @@
 body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .intestazione{
-    background-color: #18100a;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    padding: 0 20px;
-    align-items: center;
+  background-color: #18100a;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
 }
 
 #intro{
-  background-image: url(https://i.imgur.com/s0AweSC.png);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 35px;
+background-image: url(https://i.imgur.com/s0AweSC.png);
+background-color: #000;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 35px;
 }
 
 h1 , h2{
-    text-align: center;
-    color: #f3f3f3 !important;
+  text-align: center;
+  color: #f3f3f3 !important;
 }
 
 .header{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 header img{
-    width: 30%;
+  width: 30%;
 }
 
 /*  Icone dei menu  */
 .container{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
 }
 
 
 .bottone {
-  position: relative;
-  margin: 5px;
-  width: 45%;
-  height: 100px;
-  overflow: hidden;
-  color: white;
-  text-align: center;
+position: relative;
+margin: 5px;
+width: 45%;
+height: 100px;
+overflow: hidden;
+color: white;
+text-align: center;
 }
 
 .bottone-testo {
-  position: absolute;
-  bottom: 4px;
-  left: 8px;
-  width: 90%;
-  color: white ;
-  background: rgba(0, 0, 0, 0.5); /* sfondo semi-trasparente */
-  font-weight: bold;
-  font-size: 1rem;
+position: absolute;
+bottom: 4px;
+left: 8px;
+width: 90%;
+color: white ;
+background: rgba(0, 0, 0, 0.5); /* sfondo semi-trasparente */
+font-weight: bold;
+font-size: 1rem;
 }
 
 .btn-toggle {
-  color: #000;
-  border: 1px solid #ccc;
+color: #000;
+border: 1px solid #ccc;
 }
 
 .btn-warning.active {
-  background-color: #a97f02 !important;
-  border-color: #c69500 !important;
-  color: white;
+background-color: #a97f02 !important;
+border: solid 3px #c69500 ;
+color: white;
 }
 
 .btn-success.active {
-  background-color: #004f2a !important;
-  border-color: #157347 !important;
-  color: white;
+background-color: #004f2a !important;
+border: solid 3px #157347 ;
+color: white;
 }
 
 
 
 
 #btnAntipasti{
-  background-image: url(img/buschetta.webp);
-  background-size: cover;
+background-image: url(img/buschetta.webp);
+background-size: cover;
 }
 
 #btnPrimi{
-  background-image: url(img/lasagne.webp);
-  background-size: cover;
+background-image: url(img/lasagne.webp);
+background-size: cover;
 }
 
 #btnSecondi{
-  background-image: url(img/polenta_spezzatino.webp);
-  background-size: cover;
+background-image: url(img/polenta_spezzatino.webp);
+background-size: cover;
 }
 
 #btnDolci{
-  background-image: url(img/tiramisu_.webp);
-  background-size: cover;
+background-image: url(img/tiramisu_.webp);
+background-size: cover;
 }
 
 .carta{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.282);
+display: flex;
+flex-direction: column;
+align-items: center;
+color: white;
+background-color: rgba(0, 0, 0, 0.282);
 
 }
 /* Filtri e Checkbox */
 input{
-  color: white;
+color: white;
 }
 
 /* Menu piatti */
 
 .piatto {
-  display: inline-block;
-  margin: 10px;
+display: inline-block;
+margin: 10px;
 }
 .hidden {
-  display: none;
+display: none;
 }
 
 
 .dropdown-menu .dropdown-item {
-    background-color: #bc57c1;
+  background-color: #bc57c1;
 }
 
 /* Cambia colore al passaggio del mouse */
 .dropdown-menu .dropdown-item:hover {
-    background-color: #a840a8;
-    color: white;
+  background-color: #a840a8;
+  color: white;
 }
 
 #toggleMenu,
 #toggleMenuEn,
 #toggleMenuDe  {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
-  .dropdown-menu.show{
-    padding: 0 !important;
-  }
-  
+.dropdown-menu.show{
+  padding: 0 !important;
+}
+
 
 .load{
-    background-color: #3b0057;
-    color: white;
+  background-color: #3b0057;
+  color: white;
 }
 
 
 /* Bottoni e navbar */
 
 .navbar{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #toggleMenu , #toggleMenuEn ,#toggleMenuDe{
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 img{
-    width: 100%;
+  width: 100%;
 }
 
 #filtri-container {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 10px;
+display: none;
+flex-direction: column;
+justify-content: center;
+margin-top: 10px;
 }
 
 .btn{
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 
 /* effetti di apparizione  */
 
 
 h4 , p , strong {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 
 /* Loader */
 
 .loader {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #ca34db;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  #loader-text {
-    margin-top: 10px;
-    font-size: 16px;
-    color: white;
-  }
-  
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #ca34db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loader-text {
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+}
+
 /* Animazione di rotazione */
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .menu{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 
 /* Style img */
 
 .fade-left {
-    margin: 20px 0;
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: fadeLeft 1s ease-out forwards;
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeLeft 1s ease-out forwards;
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeRight 1s ease-out forwards;
+}
+
+@keyframes fadeLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  .fade-right {
-    opacity: 0;
-    transform: translateX(50px);
-    animation: fadeRight 1s ease-out forwards;
+}
+
+@keyframes fadeRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  @keyframes fadeLeft {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes fadeRight {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
+}
+
 
 .fade-in {
-    opacity: 0;
-    animation: fadeIn 1.2s ease-in-out forwards;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 
-  .image-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .image-wrapper .img-loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    border: 4px solid #ccc;
-    border-top: 4px solid #db34d3;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-  
-  .image-wrapper img {
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-  }
-  .image-wrapper img.loaded {
-    opacity: 1;
-  }
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
 
-  /* classe utilizzata per far sparire i piatti non consoni alla selezione  */
-  .hidden {
-    display: none !important;
-  }
-  
-  
+.image-wrapper .img-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #db34d3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.image-wrapper img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+.image-wrapper img.loaded {
+  opacity: 1;
+}
+
+/* classe utilizzata per far sparire i piatti non consoni alla selezione  */
+.hidden {
+  display: none !important;
+}
+
+
 
 /* Style footer  */
 
 footer{
-  background-color: #18100a;
-  width: 100%;
-    height: 100px;
+background-color: #18100a;
+width: 100%;
+  height: 100px;
 }
 
 
