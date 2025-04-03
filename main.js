@@ -83,12 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
   function translateUI() {
-    console.log("LANG DATA:", langData);
+    // console.log("LANG DATA:", langData);
   
     document.getElementById("btnAntipasti").querySelector(".bottone-testo").textContent = langData.antipasti;
     document.getElementById("btnPrimi").querySelector(".bottone-testo").textContent = langData.primi;
     document.getElementById("btnSecondi").querySelector(".bottone-testo").textContent = langData.secondi;
     document.getElementById("btnDolci").querySelector(".bottone-testo").textContent = langData.dolci;
+    document.getElementById("btnFiltroVegetariano").textContent = langData.vegetariano
+    document.getElementById("btnFiltroVegano").textContent = langData.vegano
     document.getElementById("btnResetFiltri").textContent = langData.reset;
     document.getElementById("benvenuto").textContent = langData.scopriMenu;
   
@@ -174,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     menuContainer.innerHTML = `<h2 class="text-center my-4">${titoloSezione}</h2>`;
     document.getElementById("filtri-container").style.display = "flex";
   
-    console.log("PIATTI:", piatti);
+    // console.log("PIATTI:", piatti);
   
     piatti.forEach(item => {
       const menuItem = document.createElement("div");
